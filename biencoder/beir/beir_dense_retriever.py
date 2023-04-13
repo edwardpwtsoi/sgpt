@@ -10,6 +10,7 @@ from typing import Dict, List, Tuple, ValuesView
 import numpy as np
 import torch
 from transformers import AutoTokenizer, AutoModel
+from tqdm import tqdm
 
 from beir import util, LoggingHandler
 from beir.datasets.data_loader import GenericDataLoader
@@ -224,7 +225,7 @@ class CustomEmbedder:
     
     def embed_batcher(self, texts: List[Tuple[int, str]], is_query, out_name=None, **kwargs):
         all_embeddings = {}
-        for i in range(0, len(texts), self.batch_size):
+        for i in tqdm(range(0, len(texts), self.batch_size)):
             # Subselect batch_size items
             batch = texts[i : i + self.batch_size]
             ids, sentences = zip(*batch)
