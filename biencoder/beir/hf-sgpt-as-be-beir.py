@@ -132,7 +132,7 @@ def parse_args():
     parser.add_argument("--qrels_file", required=True, help="path to qrels.tsv")
     parser.add_argument("--model_path", required=True,
                         help="huggingface model repository name or local path (for sharded it must be a local path)")
-    parser.add_argument("--sharded", action="store_ture")
+    parser.add_argument("--sharded", action="store_true")
     parser.add_argument("--batch_size", default=1, type=int)
     parser.add_argument("--query_batch_size_multiplier", default=8, type=int)
     parser.add_argument("--score_function", default="cos_sim", type=str, choices=["cos_sim", "dot"])
